@@ -27,6 +27,6 @@ class Magazine
 
   def contributing_authors
     authors_count = self.contributors.group_by { |author| author.name }
-    authors_count.select { |_, authors| authors.size > 2 }.keys
+    authors_count.select { |key, value| value.size > 2 }.keys
   end
 end
