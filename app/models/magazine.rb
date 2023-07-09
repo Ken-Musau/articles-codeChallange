@@ -14,7 +14,6 @@ class Magazine
   end
 
   def contributors
-    # Article.all.select { |article| article.magazine == self }.map { |article| article.author }
     Article.all.select { |article| article.magazine == self }.map(&:author)
   end
 
@@ -24,5 +23,10 @@ class Magazine
 
   def article_titles
     Article.all.select { |article| article.magazine == self }.map(&:title)
+  end
+
+  def contributing_authors
+    authors_count = self.contributors.group_by { |author| author.name }
+    authors_count.select { |_, authors| authors.size > 2 }.keys
   end
 end

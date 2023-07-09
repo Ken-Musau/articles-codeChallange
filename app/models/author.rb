@@ -10,7 +10,6 @@ class Author
   end
 
   def magazines
-    # self.articles.map { |article| article.magazine }.uniq
     self.articles.map(&:magazine).uniq
   end
 
